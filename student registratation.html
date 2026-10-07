@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Registration</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+        }
+
+        input {
+            width: 250px;
+            padding: 8px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            padding: 8px 10px;
+            cursor: pointer;
+        }
+
+        ol {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Student Registration</h2>
+
+    <label>Student Name:</label><br>
+    <input type="text" id="studentName" placeholder="Enter student name">
+    <br>
+
+    <button onclick="addStudent()">Add Student</button>
+
+    <h3>Student List</h3>
+
+    <ol id="studentList"></ol>
+
+    <p>
+        <b>Total Students: </b>
+        <span id="totalStudents">0</span>
+    </p>
+
+    <script>
+        let students = [];
+
+        function addStudent() {
+
+            let name = document.getElementById("studentName").value;
+
+            if (name == "") {
+                alert("Please enter student name");
+                return;
+            }
+
+            students.push(name);
+
+            document.getElementById("studentList").innerHTML = "";
+
+            for (let i = 0; i < students.length; i++) {
+
+                let li = document.createElement("li");
+
+                li.textContent = students[i];
+
+                document.getElementById("studentList").appendChild(li);
+            }
+
+            document.getElementById("totalStudents").textContent = students.length;
+
+            document.getElementById("studentName").value = "";
+        }
+    </script>
+
+</body>
+</html>
